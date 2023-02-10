@@ -1,0 +1,26 @@
+.App {
+    text-align: center;
+  }
+  
+  
+  
+  
+  .App-header {
+  
+      background-color:rgb(191, 234, 248);
+      width:100%;
+  
+  }
+  
+  .App-body{
+    padding:30;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  .subjectCards{
+    justify-items: center;
+    padding-right: 20;
+  }
