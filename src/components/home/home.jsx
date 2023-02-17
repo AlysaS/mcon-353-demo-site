@@ -8,12 +8,14 @@ export const Home = () =>  {
     
     <div className="App">
       <header className="App-header">
+        
+        {/*  Added this to header
         <Box sx={{float:"right"}}>
           <Avatar src={process.env.PUBLIC_URL + 'pictures/blankProfile.png'} 
            sx={{border:1.5 , width: 70, height:70}}/>
           <Button variant="text" float="right">Sign In</Button>
-        </Box>
-       
+        </Box>*/
+      }
           <img className = "App-Logo" src= {process.env.PUBLIC_URL + 'pictures/HomeworkHelp.png'} alt="Camp Summer logo" height={300} width={500} />
     <Divider variant="middle" light= {false}  />
 

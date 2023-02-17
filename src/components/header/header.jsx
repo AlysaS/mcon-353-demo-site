@@ -61,7 +61,7 @@ export function Header() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          {/*<AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />  */}
           <Typography
             variant="h6"
             noWrap
@@ -122,7 +122,7 @@ export function Header() {
 
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          { /*<AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />  */}
           <Typography
             variant="h5"
             noWrap
@@ -161,7 +161,7 @@ export function Header() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="loginLogo" src={process.env.PUBLIC_URL + 'pictures/blankProfile.png'} />
               </IconButton>
             </Tooltip>
             <Menu
