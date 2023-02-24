@@ -1,10 +1,9 @@
 import React ,{useState} from 'react';
-import {Checkbox, Box} from '@mui/material';
-//import {CheckCircleOutlineIcon, CheckCircleIcon}  from '@mui/icons-material';
+import {Checkbox, ListItemText, TextField, List, ListItem, IconButton,Button} from '@mui/material';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+
 
 export const Todo = () => {
     
@@ -12,7 +11,7 @@ export const Todo = () => {
    const [input, setInput] = useState(""); //empty input
 
    //add todos as objects instead of strings so that 
-    const [todos,setTodos] = useState( [{title: "first", isComplete: false},{title: "second", isComplete: true}]);
+    const [todos,setTodos] = useState( [{title: "Homework!", isComplete: false},{title: "Shopping", isComplete: true}]);
     
     const onInput = (event) => {console.log(event.target.value);
     setInput(event.target.value)} ;
@@ -42,31 +41,38 @@ export const Todo = () => {
     }
 
     return (
-        <Box sx={{textAlign:"center"}}>
-        <div > 
+        <div style={{textAlign:"center"}}> 
             
-            <h1 >Todos</h1> 
+            <h1 style={{fontSize: 65}}>Todos</h1> 
            
-           <input  onInput= {onInput} value= {input}  />
-           <button onClick={addTodo}>ADD</button>
-
-           {
-            //want to print every string in array as a <p> 
+            <TextField   variant="outlined" size="small" onInput= {onInput} value= {input} />
+            <Button variant="contained" onClick={addTodo}>ADD</Button>
+        
+           <List sx={{ width: '30%', textAlign:"center",  margin: "auto"}}>
+           {//want to print every string in array as a list element 
             todos.map(todo => (
-            <p key={todo.title} >
+            <ListItem sx={{border:.75}}
+            secondaryAction={
+                <IconButton edge="end">
+                    <Checkbox color="success" icon={<CheckCircleOutlineIcon />} checkedIcon={<CheckCircleIcon />} checked={todo.isComplete} onChange= {() => {toggleChecked(todo)}}/>
+                    <Checkbox icon={<DeleteForeverOutlinedIcon/>} checkedIcon={<DeleteForeverOutlinedIcon/>}  onChange= {() => {deleteTodo(todo)}}/>
+                </IconButton>
+            }>
+            <ListItemText key={todo.title} >
                 {todo.title}
 
-                {/*//control check (checked) but also giev use way to change it by using onInput*/} 
-                {/*<input type="checkbox" checked={todo.isComplete}  onChange={() => {toggleChecked(todo)}}/>   */}
+                {/*//control check (checked) but also giev use way to change it by using onInput 
+                <input type="checkbox" checked={todo.isComplete}  onChange={() => {toggleChecked(todo)}}/>   
                 <Checkbox color="success" icon={<CheckCircleOutlineIcon />} checkedIcon={<CheckCircleIcon />} checked={todo.isComplete} onChange= {() => {toggleChecked(todo)}}/>
-                <Checkbox icon={<DeleteForeverOutlinedIcon/>} checkedIcon={<DeleteRoundedIcon/>}  onChange= {() => {deleteTodo(todo)}}/>
+                <Checkbox icon={<DeleteForeverOutlinedIcon/>} checkedIcon={<DeleteRoundedIcon/>}  onChange= {() => {deleteTodo(todo)}}/>  */}
                 
-            </p>))
-           }
-
-          
-            
+            </ListItemText>
+            </ListItem>
+            ))}
+           
+          </List>
+           
         </div>
-    </Box>
+        
     )
 }
