@@ -1,4 +1,10 @@
 import React ,{useState} from 'react';
+import {Checkbox, Box} from '@mui/material';
+//import {CheckCircleOutlineIcon, CheckCircleIcon}  from '@mui/icons-material';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import DeleteRoundedIcon from '@mui/icons-material/DeleteRounded';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 
 export const Todo = () => {
     
@@ -30,10 +36,16 @@ export const Todo = () => {
         console.log(todo);
     }
 
+    const deleteTodo = (todo) => {
+        const newTodos = todos.filter((x) => !(x.title === todo.title));
+        setTodos(newTodos);
+    }
+
     return (
-        
-        <div> 
-            <h1>Todos</h1> 
+        <Box sx={{textAlign:"center"}}>
+        <div > 
+            
+            <h1 >Todos</h1> 
            
            <input  onInput= {onInput} value= {input}  />
            <button onClick={addTodo}>ADD</button>
@@ -41,15 +53,20 @@ export const Todo = () => {
            {
             //want to print every string in array as a <p> 
             todos.map(todo => (
-            <p key={todo.title}>
-                {/*//control check (checked) but also giev use way to change it by using onInput*/} 
-                <input type="checkbox" checked={todo.isComplete}  onChange={() => {toggleChecked(todo)}}/>
-
+            <p key={todo.title} >
                 {todo.title}
+
+                {/*//control check (checked) but also giev use way to change it by using onInput*/} 
+                {/*<input type="checkbox" checked={todo.isComplete}  onChange={() => {toggleChecked(todo)}}/>   */}
+                <Checkbox color="success" icon={<CheckCircleOutlineIcon />} checkedIcon={<CheckCircleIcon />} checked={todo.isComplete} onChange= {() => {toggleChecked(todo)}}/>
+                <Checkbox icon={<DeleteForeverOutlinedIcon/>} checkedIcon={<DeleteRoundedIcon/>}  onChange= {() => {deleteTodo(todo)}}/>
+                
             </p>))
            }
+
+          
             
         </div>
-
+    </Box>
     )
 }
