@@ -1,3 +1,5 @@
 import { createContext } from "react";
 
-const TodoContext = createContext({ todos: [] }); //default is empty array
+export const TodoContext = createContext({
+  todos: [],
+}); //default is empty array
