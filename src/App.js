@@ -8,6 +8,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 //import { AppBar } from "@mui/material";
 import { TodoContext } from "./state/todo/todo-context";
 import { todoReducer } from "./state/todo/todo.reducer";
+import { Chat } from "./components/chat/chat";
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/todo" element={<Todo />} />
+            <Route path="/chat" element={<Chat />} />
           </Routes>
         </TodoContext.Provider>
   

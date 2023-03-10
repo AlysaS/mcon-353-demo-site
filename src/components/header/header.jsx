@@ -18,7 +18,11 @@ import AdbIcon from '@mui/icons-material/Adb';
 import {useNavigate} from "react-router-dom"
 
 //pass in objects -- give page name and path
-const pages = [{name: "Home", path:"/"}, {name: "Todo", path: "/todo"}];
+const pages = [
+  {name: "Home", path:"/"}, 
+{name: "Todo", path: "/todo"}, 
+{name: "Chat", path: "/chat"}
+];
 
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
